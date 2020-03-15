@@ -2,6 +2,8 @@
 
 Based of https://github.com/vyrtualsynthese/Digital-Ocean-OnDemand-Minecraft-Server
 
+Guide cloned from https://medium.com/@vyrtualsynthese/on-demand-minecraft-server-with-terraform-and-digital-ocean-3afcc8a5fe90 
+
 ## Prerequisite
 
 - A Digital Ocean account with few credits to rent your droplet.
