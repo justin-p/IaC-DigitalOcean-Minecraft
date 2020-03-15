@@ -1,0 +1,6 @@
+.idea
+terraform.tfvars
+.terraform
+terraform.tfstate*
+minecraft-server
+uploadFolder/*.tar.gz
