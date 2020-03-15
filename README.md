@@ -16,43 +16,41 @@ Guide cloned from https://medium.com/@vyrtualsynthese/on-demand-minecraft-server
 
 ## Prepare the project for production
 
-a. Download your Minecraft Server from minecraft official website https://www.minecraft.net/en-us/download/server/
+1. Download your Minecraft Server from minecraft official website https://www.minecraft.net/en-us/download/server/
 
 ```
 cd Digital-Ocean-OnDemand-Minecraft-Server
 wget [the server link taken from minecraft website]
 ```
 
-b. Create an ‘minecraft-server’ folder and move your server files into the uploadFolder
+2. Create an ‘minecraft-server’ folder and move your server files into the uploadFolder
 
 ```
 mkdir uploadFolder/minecraft-server
 mv server.jar uploadFolder/minecraft-server
 ``` 
 
-c. If it is a new server Run it one time to generate server configuration files
+3. If it is a new server Run it one time to generate server configuration files
 
 ```
 java -Xmx1024M -Xms1024M -jar uploadFolder/minecraft-server/server.jar nogui
 ```
 
-d. The server should start and stop by himself then you could edit eula.txt.
+4. The server should start and stop by himself then you could edit eula.txt.
 Set eula to true. It should be like this.
 
 ```
 eula=true
 ```
 
-
-e. Next step is to setup your server.properties file. Feel free to configure your server as you want but you need to make sure enable-rcon is set to true and you have an rcon.password set up.
+5. Next step is to setup your server.properties file. Feel free to configure your server as you want but you need to make sure enable-rcon is set to true and you have an rcon.password set up.
 
 ```
 rcon.password=foo
 enable-rcon=true
 ```
 
-
-f. Make sure your configuration is ok by running the server on last time and connecting to it. Then shut it down and you are all set. Last Step is to compress the server file in tar.gz format.
+6. Make sure your configuration is ok by running the server on last time and connecting to it. Then shut it down and you are all set. Last Step is to compress the server file in tar.gz format.
 
 ```
 cd uploadFolder
