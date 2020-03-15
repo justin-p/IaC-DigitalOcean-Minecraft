@@ -70,7 +70,7 @@ We will name that new key mc_rsa
 
 ```
 Generating public/private rsa key pair.
-Enter file in which to save the key (/your_home/.ssh/id_rsa): mc_rsa
+Enter file in which to save the key (/home/justin-p/.ssh//id_rsa): /home/justin-p/.ssh/mc_rsa
 ```
 
 ## Connect doctl with your Digital Ocean account
