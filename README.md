@@ -103,7 +103,7 @@ Don't forget to update the `docker-compose.yml` file in the upload folder to ref
 
 ```
 # You should change this line to match your droplet configuration
-command: "java -Xms3072M -Xmx3584M -jar server.jar"
+command: "java -Xms512M -Xmx512M -jar server.jar"
 ```
 
 `-Xms` = min ram
