@@ -99,6 +99,8 @@ For the last two field you need to call Digital Ocean’s api to get droplets in
 `doctl compute size list --output json` will give your informations about available droplets. When you have chose your droplet size take note of your droplet slug and region and input it in your terraform.tfvars file.
 My go to droplet is the `s-1vcpu-1gb` strong enough to play with few friends.
 
+Don't forget to update the `docker-compose.yml` file in the upload folder to reflect your chose of droplet.
+
 ## Run your Minecraft Server
 
 Now the hard part is done time to run your Minecraft Server with some simple commands.
