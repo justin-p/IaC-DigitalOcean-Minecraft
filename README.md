@@ -106,7 +106,7 @@ Don't forget to update the `docker-compose.yml` file in the upload folder to ref
 command: "java -Xms3072M -Xmx3584M -jar server.jar"
 ```
 
-`-Xms` = min ramn
+`-Xms` = min ram
 `-Xmx` = max ram
 
 ## Run your Minecraft Server
