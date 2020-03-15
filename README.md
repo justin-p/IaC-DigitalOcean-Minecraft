@@ -88,12 +88,12 @@ Inside the project copy the environment variable file to edit
 cp terraform.tfvars.dist terraform.tfvars
 ```
 
-`do_token` past your previous generated Digital Ocean API Token
-`pub_key` input the path to your rsa public key in our exemple : "~/.ssh/mc_rsa.pub"
-`pvt_key` input the path to your rsa private key in our exemple : "~/.ssh/mc_rsa"
-`rcon_pwd` your previously setup rcon password for your minecraft server
-`man_ip` input external ip for management here (["1.2.3.4/32"])
-`play_ip` input external ip from players ip here (["1.2.3.4/32","3.4.5.6/32"]). P.S. if you want the whole internet to connect type ["0.0.0.0/0","::/0"]
+`do_token` past your previous generated Digital Ocean API Token  
+`pub_key` input the path to your rsa public key in our exemple : "~/.ssh/mc_rsa.pub"  
+`pvt_key` input the path to your rsa private key in our exemple : "~/.ssh/mc_rsa"  
+`rcon_pwd` your previously setup rcon password for your minecraft server  
+`man_ip` input external ip for management here `["1.2.3.4/32"]`  
+`play_ip` input external ip from players ip here `["1.2.3.4/32","3.4.5.6/32"]`. P.S. if you want the whole internet to connect type `["0.0.0.0/0","::/0"]`  
 
 For the last two field you need to call Digital Ocean’s api to get droplets informations
 `doctl compute size list --output json` will give your informations about available droplets. When you have chose your droplet size take note of your droplet slug and region and input it in your terraform.tfvars file.
