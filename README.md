@@ -99,7 +99,15 @@ For the last two field you need to call Digital Ocean’s api to get droplets in
 `doctl compute size list --output json` will give your informations about available droplets. When you have chose your droplet size take note of your droplet slug and region and input it in your terraform.tfvars file.
 My go to droplet is the `s-1vcpu-1gb` strong enough to play with few friends.
 
-Don't forget to update the `docker-compose.yml` file in the upload folder to reflect your chose of droplet.
+Don't forget to update the `docker-compose.yml` file in the upload folder to reflect your choice of droplet.
+
+```
+# You should change this line to match your droplet configuration
+command: "java -Xms3072M -Xmx3584M -jar server.jar"
+```
+
+`-Xms` = min ramn
+`-Xmx` = max ram
 
 ## Run your Minecraft Server
 
