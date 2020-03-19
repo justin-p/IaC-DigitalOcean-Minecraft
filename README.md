@@ -1,6 +1,6 @@
 # IaC Minecraft Server on Digital Ocean
 
-Based of https://github.com/vyrtualsynthese/Digital-Ocean-OnDemand-Minecraft-Server
+Based of https://medium.com/@vyrtualsynthese/on-demand-minecraft-server-with-terraform-and-digital-ocean-3afcc8a5fe90 
 
 Guide cloned from https://medium.com/@vyrtualsynthese/on-demand-minecraft-server-with-terraform-and-digital-ocean-3afcc8a5fe90 
 
@@ -72,7 +72,7 @@ We will name that new key mc_rsa
 
 ```bash
 Generating public/private rsa key pair.
-Enter file in which to save the key (/your_home/.ssh/id_rsa): mc_rsa
+Enter file in which to save the key (/home/justin-p/.ssh//id_rsa): /home/justin-p/.ssh/mc_rsa
 ```
 
 ## Connect doctl with your Digital Ocean account
@@ -108,6 +108,7 @@ command: "java -Xms512M -Xmx512M -jar server.jar"
 ```
 
 ##### s-2vcpu-4gb
+
 
 ```bash
 command: "java -Xms3072M -Xmx3584M -jar server.jar"
@@ -170,3 +171,4 @@ Then after reviewing your configuration type `yes`
 
 Your minecraft server will be gracefully shut down. The world and server configuration will then compressed and downloaded in to your local Minecraft Server folder.
 Then it will continue to destory the Droplet.
+
