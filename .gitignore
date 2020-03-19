@@ -4,3 +4,4 @@ terraform.tfvars
 terraform.tfstate*
 minecraft-server
 uploadFolder/*.tar.gz
+uploadFolder/*.tar.gz.bak

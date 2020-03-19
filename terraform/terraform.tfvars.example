@@ -1,0 +1,64 @@
+////////////////////////////
+//// Required variables ////
+////////////////////////////
+
+// Your DigitalOcean Api token generated from here https://cloud.digitalocean.com/account/api/tokens
+do_token =
+
+// Path to your generated rsa keys. Used for SSH/SCP authentication.
+pub_key =
+pvt_key =
+
+// Path to this repository.
+this_repo = "~/IaC-DigitalOcean-Minecraft"
+
+// The rcon password of your server
+rcon_pwd =
+
+////////////////////////////
+//// Optional variables ////
+////////////////////////////
+
+// Tag added to the DigitalOcean Droplet
+// Defaults to "mc-server"
+// do_tag = 
+
+// Name of the new to the DigitalOcean Droplet
+// Defaults to "mc-server"
+// do_name = 
+
+// Description of the new to the DigitalOcean Droplet
+// Defaults to "Minecraft server."
+// do_description = 
+
+// Name of the SSH public key added to DigitalOcean
+// Defaults to "mc-server-SSH-Key"
+// do_ssh_key = 
+
+// Region to create droplet in
+// You can find correct values with doctl
+// Defaults to ams3
+// region =
+
+// Droplet Size
+// You can find correct values with doctl
+// Defaults to "s-2vcpu-4gb" ($20/mo, $0.030/hour)
+// size =
+
+// Management IPs
+// Opens SSH for listed IPs
+// Defaults to ["0.0.0.0/0","::/0"]
+// man_ip = 
+
+// Player IPs
+// Opens Minecraft ports for listed IPs
+// Defaults to ["0.0.0.0/0","::/0"]
+// play_ip = 
+
+// Enable or Disable discord integration
+// When skipmessage is set to anything else then false integration with discord will be disabled.
+// Defaults to true
+// skipmessage = 
+
+// Webhook url for discord bot
+// webhook = 
