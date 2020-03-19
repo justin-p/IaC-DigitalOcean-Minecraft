@@ -7,7 +7,7 @@ resource "digitalocean_ssh_key" "default" {
   public_key = file(var.pub_key)
 }
 
-resource "digitalocean_tag" "mc-server" {
+resource "digitalocean_tag" "mc" {
   name = var.do_tag
 }
 
@@ -19,19 +19,20 @@ resource "digitalocean_project" "mc-server" {
 }
 
 resource "digitalocean_firewall" "mc-server" {
-  name = "mc-server"
-  tags = ["mc-server"]
+  depends_on = [digitalocean_tag.mc]
+  name       = "mc-server"
+  tags       = [digitalocean_tag.mc.id]
 
   inbound_rule {
     protocol         = "tcp"
     port_range       = "22"
-    source_addresses = var.man_ip 
+    source_addresses = var.man_ip
   }
 
   inbound_rule {
     protocol         = "tcp"
     port_range       = "2375-2376"
-    source_addresses = var.man_ip 
+    source_addresses = var.man_ip
   }
 
   inbound_rule {
@@ -61,29 +62,30 @@ resource "digitalocean_firewall" "mc-server" {
     protocol              = "udp"
     port_range            = "1-65535"
     destination_addresses = ["0.0.0.0/0", "::/0"]
-  }  
+  }
 }
 
 resource "digitalocean_droplet" "mc-server" {
-  image = "docker-18-04"
-  name = "mc-server"
-  tags = ["mc-server"]
-  ipv6 = false
-  region = var.region
-  size = var.size
+  depends_on         = [digitalocean_tag.mc]
+  image              = "docker-18-04"
+  name               = "mc-server"
+  tags               = [digitalocean_tag.mc.id]
+  ipv6               = false
+  region             = var.region
+  size               = var.size
   private_networking = true
-  ssh_keys = [digitalocean_ssh_key.default.fingerprint]
+  ssh_keys           = [digitalocean_ssh_key.default.fingerprint]
 
   provisioner "file" {
     source      = "${var.this_folder}/uploadFolder/"
     destination = "."
   }
   connection {
-    user = "root"
-    type = "ssh"
+    user        = "root"
+    type        = "ssh"
     private_key = file(var.pvt_key)
-    timeout = "2m"
-    host = digitalocean_droplet.mc-server.ipv4_address
+    timeout     = "2m"
+    host        = digitalocean_droplet.mc-server.ipv4_address
   }
 
   provisioner "remote-exec" {
@@ -106,10 +108,10 @@ resource "digitalocean_droplet" "mc-server" {
   provisioner "local-exec" {
     when    = destroy
     command = "python3 ${var.this_folder}/discordbot/bot.py -u ${var.webhook} -c 'The Minecraft server ${var.do_name} at IP ${digitalocean_droplet.mc-server.ipv4_address} is shutting down.' --skipmessage ${var.skipmessage}"
-  }   
+  }
 
   provisioner "remote-exec" {
-    when    = destroy
+    when = destroy
     inline = [
       "cd uploadFolder",
       "echo sleeping",
@@ -122,7 +124,7 @@ resource "digitalocean_droplet" "mc-server" {
       "tar -cvzf minecraft-server.tar.gz minecraft-server",
     ]
   }
-  
+
   provisioner "local-exec" {
     when    = destroy
     command = "scp -i ${var.pvt_key} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@${digitalocean_droplet.mc-server.ipv4_address}:uploadFolder/minecraft-server.tar.gz ${var.this_folder}/uploadFolder"
